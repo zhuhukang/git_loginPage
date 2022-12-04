@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录界面</title>
+		<script type="text/javascript" src="js/login.js"></script>
+	</head>
+	<body>
+	<form method="post" action="LoginServlet" onsubmit="return valForm()">
+	<table>
+		<tr>
+			<td><label for="username">用户名:</label></td>
+			<td><input type="text" name="username" id="username" required="required" onblur="valname();"><span id="userErr"></span></td>
+		</tr>
+		<tr>
+			<td><label for="password">密　码:</label></td>
+			<td><input type="password" name="password" id="password" required="required" onblur="valpass();"><span id="passErr"></span></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="登录"><a href="register.html"><input type="button" value="去注册"></a></td>
+		</tr>
+	</table>
+	</form>
+</body>
+</html>
+<script>
+	
+	//验证用户名
+	function valname()
+	{
+		var username=document.getElementById("username");
+		var userErr=document.getElementById("userErr");
+		
+		if(username.value.replace(/\s/g,"")=="")
+		{
+			userErr.innerHTML="用户名不能为空";
+			return false;
+		}else
+		{
+			username.value=username.value.replace(/\s/g,"");//除去空格
+			userErr.innerHTML="";
+			return true;
+		}
+	}
+	//验证密码
+	function valpass()
+	{
+		var password=document.getElementById("password");
+		var passErr=document.getElementById("passErr");
+		
+		if(password.value.replace(/\s/g,"")=="")
+		{
+			passErr.innerHTML="密码不能为空";
+			return false;
+		}else
+		{
+			password.value=password.value.replace(/\s/g,"");//除去空格
+			passErr.innerHTML="";
+			return true;
+		}
+	}
+	//提交验证
+	function valForm()
+	{
+		if(valname()==true && valpass()==true)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+	
+</script>
